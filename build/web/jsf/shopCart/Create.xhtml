@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateShopCartTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateShopCartLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{shopCartController.selected.id}" title="#{bundle.CreateShopCartTitle_id}" required="true" requiredMessage="#{bundle.CreateShopCartRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateShopCartLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{shopCartController.selected.name}" title="#{bundle.CreateShopCartTitle_name}" required="true" requiredMessage="#{bundle.CreateShopCartRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.CreateShopCartLabel_price}" for="price" />
+                    <h:inputText id="price" value="#{shopCartController.selected.price}" title="#{bundle.CreateShopCartTitle_price}" required="true" requiredMessage="#{bundle.CreateShopCartRequiredMessage_price}"/>
+                    <h:outputLabel value="#{bundle.CreateShopCartLabel_image}" for="image" />
+                    <h:inputText id="image" value="#{shopCartController.selected.image}" title="#{bundle.CreateShopCartTitle_image}" required="true" requiredMessage="#{bundle.CreateShopCartRequiredMessage_image}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{shopCartController.create}" value="#{bundle.CreateShopCartSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{shopCartController.prepareList}" value="#{bundle.CreateShopCartShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateShopCartIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
